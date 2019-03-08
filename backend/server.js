@@ -11,13 +11,18 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/trip');
+//TODO you should first check if the trip table is there else create it.
+
+mongoose.connect('mongodb://localhost:27017/TravelApp');
 
 const connection = mongoose.connection;
+
 
 connection.once('open', () => {
     console.log('MongoDB database connection established successfully!');
 });
+
+
 
 // This returns a trip by id
 router.route('/trip/:id').get((req, res) => {
